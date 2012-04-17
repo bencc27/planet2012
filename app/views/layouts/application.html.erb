@@ -6,7 +6,11 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
-  <script type="text/javascript">    $(function() {      $( "#trip_description" ).cleditor();    });  </script>
+  <script type="text/javascript">
+    $(function() {
+      $( "#trip_description" ).cleditor();
+    });
+  </script>
 
 </head>
 
@@ -14,9 +18,26 @@
   <div id="banner"> 
     <%= image_tag("logo3.png") %>
     <%= @page_title || "Planet Travel Site" %><br />
-    <div class="user">      <% if current_user %>        <%= link_to current_user.name,              edit_user_registration_path %> |        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>      <% else %>        <%= link_to "Sign in", new_user_session_path %>      <% end %>
+    <div class="user">
+      <% if current_user %>
+        <%= link_to current_user.name, 
+             edit_user_registration_path %> |
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
     </div> 
   </div> 
+
+    <div id="menu_arriba">
+    <%= link_to "Home", planet_index_path %>
+    <%= link_to "Contact", planet_contact_path %>
+    <%= link_to "Author", planet_author_path %>
+    <%= link_to "Home Tipos", types_path %>
+    <%= link_to "Tipos ordenados", types_ordered_index_path %>
+    <%= link_to "Ejemplo", planet_ejemplo_path %>
+  </div>
+
   <div id="columns"> 
     <div id="side"> 
       <%= link_to "Home", planet_index_path %><br /> 
@@ -31,5 +52,13 @@
       <%= yield %>
     </div> 
   </div> 
+  <div id="menu_abajo">
+    <%= link_to "Home", planet_index_path %> 
+    <%= link_to "Contact", planet_contact_path %>
+    <%= link_to "Author", planet_author_path %>
+    <%= link_to "Home Tipos", types_path %>
+    <%= link_to "Tipos ordenados", types_ordered_index_path %>
+    <%= link_to "Ejemplo", planet_ejemplo_path %>
+  </div>
 </body> 
 </html> 
