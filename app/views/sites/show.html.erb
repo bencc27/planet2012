@@ -8,7 +8,9 @@
 
   <p><%=sanitize @site.description %></p>
 
-  <p><b>Autor:</b>           <%= @site.user.name if @site.user %></p>
+  <p><b>Autor:</b> 
+          <%= @site.user.name if @site.user %></p>
+
 </div> 
 
 <div class="visitas">
@@ -16,4 +18,20 @@
 </div>
 
 <p />
-<% if @site.user == current_user %>  <%= link_to 'Edit', edit_site_path(@site) %> |<% end %><%= link_to 'Back', sites_path %>
+<% if @site.user == current_user %>
+  <%= link_to 'Edit', edit_site_path(@site) %> |
+<% end %>
+<br/>
+<% @site.comentarios.each do |coments| %>
+<br/><b><%= coments.user.name %></b>: <br/>
+<%= coments.content %></br></br>
+<% if coments.user == current_user %>
+  <%= link_to 'Editar', edit_comentario_path(coments) %> |
+  <%= link_to 'Borrar', coments, 
+                    :confirm => 'Are you sure?',
+                    :method => :delete %>
+<% end %>
+<br/>
+<%end%>
+<br/>
+<%= link_to 'Nuevo comentario', new_comentario_path %> <%= link_to 'Back', sites_path %>

@@ -36,6 +36,11 @@ user2 = User.create!(
             password: 'sedano22',
             password_confirmation: 'sedano22')
 
+user3 = User.create!( 
+            name: 'Tonto Tontez',
+            email: 'tonto@tontos.com', 
+            password: 'tontos',
+            password_confirmation: 'tontos')
 
 Site.delete_all
 
@@ -77,7 +82,7 @@ site5 = Site.create!(
             type_id: type3.id,
             image_url: 'pergamo.png',
             image: File.open(File.join(Rails.root, 'app', 'assets','images', 'pergamo.png'), "r"))
-site5.user_id = user1.id ; site5.save 
+site5.user_id = user3.id ; site5.save 
 
 
 

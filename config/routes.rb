@@ -1,8 +1,16 @@
 Planet::Application.routes.draw do
 
+  resources :comentarios
+
   get "planet/author"
 
   get "types/ordered_index"
+
+  resources :sites do
+    resources :comentarios, :only => [ :index ]
+  end
+
+  devise_for :users
 
   resources :visits
 
