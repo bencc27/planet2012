@@ -2,7 +2,11 @@ class ComentariosController < ApplicationController
   # GET /comentarios
   # GET /comentarios.json
   def index
-    @comentarios = Comentario.all
+    if params[:site_id].nil? or params[:site_id].empty?
+      @comentarios = Comentario.all            # path: /types
+      else
+      @comentarios = Site.find(params[:site_id]).comentarios  # path: /sites/id/comentarios
+    end
 
     respond_to do |format|
       format.html # index.html.erb
