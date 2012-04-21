@@ -1,3 +1,5 @@
+<%= render 'mapa' %>
+
 <div id="site">
  
   <h1><%= @site.type.name if @site.type %></h1> 
@@ -15,15 +17,18 @@
           <%= @site.longitud if @site.longitud %>  <b>Zoom: </b> 
           <%= @site.zoom if @site.zoom %></p>
 
-</div> 
-
+</div>
+<div id="map_disp" ></div>
 <div class="visitas">
   <b>Visitas:</b>  <%= @site.visitas %>
-</div>
-
-<p />
+  <b>Viajes que lo visitan:</b>  <%= @site.trips.length %>
+  </div>
+  
 <% if @site.user == current_user %>
   <%= link_to 'Edit', edit_site_path(@site) %> |
+  <%= link_to 'Borrar', @site, 
+                    :confirm => 'Are you sure?',
+                    :method => :delete %>
 <% end %>
 <br/>
 <% @site.comentarios.each do |coments| %>
