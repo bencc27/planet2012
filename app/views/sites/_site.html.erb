@@ -1,19 +1,12 @@
-<h1>New site</h1>
-
-
 <script type="text/javascript">
 if (navigator.geolocation) { //Check if browser supports W3C Geolocation API
 navigator.geolocation.getCurrentPosition (successFunction, errorFunction);
 } else { alert('Geolocation is not supported in this browser.'); }
 function successFunction(position) {
-document.getElementById('site_latitud').value=position.coords.latitude;
-document.getElementById('site_longitud').value=position.coords.longitude;
-document.getElementById('site_zoom').value=40;
+var lat = position.coords.latitude;
+var long = position.coords.longitude;
+alert('Your latitude is :'+lat+' and longitude is '+long);
 }
 function errorFunction(position) { alert('Error!'); }
 </script>
 
-
-<%= render 'form' %>
-
-<%= link_to 'Back', sites_path %>

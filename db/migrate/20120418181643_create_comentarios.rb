@@ -1,9 +1,9 @@
-class CreateComentarios < ActiveRecord::Migration
+class SitePosition < ActiveRecord::Migration
   def change
-    create_table :comentarios do |t|
-      t.text :content
-      t.integer :user_id
-      t.integer :site_id
+    change_table :comentarios do |t|
+      t.column :latitud, :decimal
+      t.column :longitud, :decimal
+      t.column :zoom, :integer
 
       t.timestamps
     end

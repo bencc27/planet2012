@@ -1,4 +1,10 @@
 class ComentariosController < ApplicationController
+ 
+   # authenticate_user! ejecuta acción solo si sesión existe
+  before_filter :authenticate_user!, :except => [ :index, :show ]
+
+ 
+
   # GET /comentarios
   # GET /comentarios.json
   def index
@@ -29,7 +35,7 @@ class ComentariosController < ApplicationController
   # GET /comentarios/new.json
   def new
     @comentario = current_user.comentarios.build
-
+    @comentario.site_id= Site.find(params[:site_id]).id
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comentario }

@@ -10,6 +10,10 @@
 
   <p><b>Autor:</b> 
           <%= @site.user.name if @site.user %></p>
+  <p><b>Latitud: </b> 
+          <%= @site.latitud if @site.latitud %>   <b>Longitud: </b> 
+          <%= @site.longitud if @site.longitud %>  <b>Zoom: </b> 
+          <%= @site.zoom if @site.zoom %></p>
 
 </div> 
 
@@ -34,4 +38,4 @@
 <br/>
 <%end%>
 <br/>
-<%= link_to 'Nuevo comentario', new_comentario_path %> <%= link_to 'Back', sites_path %>
+<%= link_to 'Nuevo comentario', new_site_comentario_path(@site)  %>  <%= link_to 'Back', sites_path %>

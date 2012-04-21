@@ -6,8 +6,10 @@ Planet::Application.routes.draw do
 
   get "types/ordered_index"
 
+  get "site/comentario/new"
+
   resources :sites do
-    resources :comentarios, :only => [ :index ]
+    resources :comentarios
   end
 
   devise_for :users
