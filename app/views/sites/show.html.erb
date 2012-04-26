@@ -32,6 +32,7 @@
 <% end %>
 <br/>
 <% @site.comentarios.each do |coment| %>
+<% if(coment.user && coment.content) %>
 <br/><b><%= coment.user.name %></b>: <br/>
 <%= coment.content %></br></br>
 <% if coment.user == current_user %>
@@ -42,12 +43,13 @@
 <% end %>
 <br/>
 <%end%>
+<%end%>
 <br/>
 
 <div id="mete_coment">
 <% if current_user %>
 <h2> Añada un comentario:</h2>
-<%= link_to 'Nuevo comentario', new_site_comentario_path(@site)  %> 
+<%= render "comentarios/comSite" %> 
   <% else %>
     <p>Logueese para añadir un comentario</p>
 <% end %>

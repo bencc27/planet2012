@@ -34,6 +34,29 @@ Planet::Application.routes.draw do
 
   get "planet/ejemplo"
 
+ get "doc/index"
+ get "doc/README_FOR_APP"
+ get "doc/ApplicationController"
+ get "doc/ApplicationHelper"
+ get "doc/Comentario"
+ get "doc/ComentariosController"
+ get "doc/ComentariosHelper"
+ get "doc/PlanetController"
+ get "doc/PlanetHelper"
+ get "doc/Site"
+ get "doc/SitesController"
+ get "doc/SitesHelper"
+ get "doc/Trip"
+ get "doc/TripsController"
+ get "doc/TripsHelper"
+ get "doc/Type"
+ get "doc/TypesController"
+ get "doc/TypesHelper"
+ get "doc/User"
+ get "doc/Visit"
+ get "doc/VisitsController"
+ get "doc/VisitsHelper"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

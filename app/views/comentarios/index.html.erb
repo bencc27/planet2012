@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Content</th>
-    <th>Id</th>
     <th>errores</th>
     <th>User</th>
     <th>Site</th>
@@ -13,9 +12,9 @@
   </tr>
 
 <% @comentarios.each do |comentario| %>
+<% if(comentario.user && comentario.content) %>
   <tr>
     <td><%= comentario.content %></td>
-    <td><%= comentario.id %></td>
     <td><%= comentario.errors %></td>
     <td><%= comentario.user_id %></td>
     <td><%= comentario.site_id %></td>
@@ -24,6 +23,7 @@
     <td><%= link_to 'Destroy', comentario, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+<%end%>
 </table>
 
 <br />
