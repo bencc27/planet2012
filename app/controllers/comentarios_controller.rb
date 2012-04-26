@@ -83,7 +83,7 @@ class ComentariosController < ApplicationController
   # DELETE /comentarios/1
   # DELETE /comentarios/1.json
   def destroy
-    @comentario = current_usr.comentarios.find(params[:id])
+    @comentario = current_user.comentarios.find(params[:id])
     @comentario.destroy
 
     respond_to do |format|

@@ -33,10 +33,22 @@ class PlanetController < ApplicationController
   def author
   end
 
+
+## == Método search de planet
+# Search es  un buscador de sitios y viajes que este en todas las páginas 
+# en el mismo lugar, y que presenta los resultados en dos apartados,
+# en sitios y en viajes encontrados.
+# genera en el directorio *proy/doc* en formato Web con
+# $proy> rake doc:app
+
   def search
     if params[:q].length >= 3
     @sites = Site.where("name like ? OR description like ?", "%#{params[:q]}%", "%#{params[:q]}%")
     @trips = Trip.where("name like ? OR description like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+
+   elsif params[:q] ==nil
+
+    format.html { redirect_to planet_index_path, notice: 'Debe buscar mas de dos letras.' }
    else
      format.html { redirect_to planet_index_path, notice: 'Debe buscar mas de dos letras.' }
     end
