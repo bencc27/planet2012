@@ -1,5 +1,5 @@
 <%= form_for(@comentario) do |f| %>
-  <% if @comentario.errors.any? %>
+<% if @comentario.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comentario.errors.count, "error") %> prohibited this comentario from being saved:</h2>
 
@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
   <p> Site: <%= @comentario.site.name %> </p>
   <div class="field">
     <%= f.label :content %><br />

@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120421115710) do
 
   create_table "comentarios", :force => true do |t|
-    t.text     "content"
+    t.string   "content"
     t.integer  "user_id"
     t.integer  "site_id"
     t.datetime "created_at", :null => false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20120421115710) do
     t.integer  "visitas",            :default => 0
     t.decimal  "latitud",            :default => 0.0
     t.decimal  "longitud",           :default => 0.0
-    t.integer  "zoom",               :default => 0
+    t.integer  "zoom",               :default => 20
   end
 
   create_table "trips", :force => true do |t|

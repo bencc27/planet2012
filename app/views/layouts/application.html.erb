@@ -49,6 +49,10 @@
     </div> 
     <div id="main"> 
       <p class="notice"><%= notice %></p> <p class="alert"><%= alert %></p>
+      <%= form_tag(planet_search_path, :method => "get") do %>
+      <%= text_field_tag(:q, nil, :placeholder => "Búsqueda") %>
+      <%= submit_tag("Search") %>
+    <% end %>  
       <%= yield %>
     </div> 
   </div> 

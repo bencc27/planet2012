@@ -32,5 +32,14 @@ class PlanetController < ApplicationController
 
   def author
   end
+
+  def search
+    if params[:q].length >= 3
+    @sites = Site.where("name like ? OR description like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+    @trips = Trip.where("name like ? OR description like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+   else
+     format.html { redirect_to planet_index_path, notice: 'Debe buscar mas de dos letras.' }
+    end
+  end
     
 end

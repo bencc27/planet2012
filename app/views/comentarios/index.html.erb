@@ -3,6 +3,8 @@
 <table>
   <tr>
     <th>Content</th>
+    <th>Id</th>
+    <th>errores</th>
     <th>User</th>
     <th>Site</th>
     <th></th>
@@ -13,6 +15,8 @@
 <% @comentarios.each do |comentario| %>
   <tr>
     <td><%= comentario.content %></td>
+    <td><%= comentario.id %></td>
+    <td><%= comentario.errors %></td>
     <td><%= comentario.user_id %></td>
     <td><%= comentario.site_id %></td>
     <td><%= link_to 'Show', comentario %></td>

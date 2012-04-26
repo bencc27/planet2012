@@ -1,0 +1,14 @@
+ 
+ 
+  <%= form_for([@site, @site.comentarios.build()]) do |f| %>
+    <div class="field">
+      <%= f.text_area :content, :rows => 6, :maxlength => 240%>
+    </div>
+    <div class="field">
+    <%= f.label :site_id %><br />
+    <%= f.text_area :site_id%>
+  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>

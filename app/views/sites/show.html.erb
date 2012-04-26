@@ -31,16 +31,25 @@
                     :method => :delete %>
 <% end %>
 <br/>
-<% @site.comentarios.each do |coments| %>
-<br/><b><%= coments.user.name %></b>: <br/>
-<%= coments.content %></br></br>
-<% if coments.user == current_user %>
-  <%= link_to 'Editar', edit_comentario_path(coments) %> |
-  <%= link_to 'Borrar', coments, 
+<% @site.comentarios.each do |coment| %>
+<br/><b><%= coment.user.name %></b>: <br/>
+<%= coment.content %></br></br>
+<% if coment.user == current_user %>
+  <%= link_to 'Editar', edit_comentario_path(coment) %> |
+  <%= link_to 'Borrar', coment, 
                     :confirm => 'Are you sure?',
                     :method => :delete %>
 <% end %>
 <br/>
 <%end%>
 <br/>
-<%= link_to 'Nuevo comentario', new_site_comentario_path(@site)  %>  <%= link_to 'Back', sites_path %>
+
+<div id="mete_coment">
+<% if current_user %>
+<h2> Añada un comentario:</h2>
+<%= link_to 'Nuevo comentario', new_site_comentario_path(@site)  %> 
+  <% else %>
+    <p>Logueese para añadir un comentario</p>
+<% end %>
+</div>
+ <%= link_to 'Back', sites_path %>

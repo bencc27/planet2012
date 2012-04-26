@@ -8,6 +8,8 @@ Planet::Application.routes.draw do
 
   get "site/comentario/new"
 
+   get "planet/search" 
+
   resources :sites do
     resources :comentarios
   end

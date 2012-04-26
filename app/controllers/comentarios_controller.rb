@@ -51,14 +51,14 @@ class ComentariosController < ApplicationController
   # POST /comentarios
   # POST /comentarios.json
   def create
-    @comentario =  current_user.comentarios.build(params[:comentario]) # Asigna solo si comentario asociado a current_user
+@comentario =  current_user.comentarios.build(params[:comentario])
 
     respond_to do |format|
       if @comentario.save
         format.html { redirect_to @comentario.site, notice: 'Comentario was successfully created.' }
         format.json { render json: @comentario.site, status: :created, location: @comentario }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to @site, notice: @comment.comment }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
       end
     end
@@ -71,7 +71,7 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.update_attributes(params[:id])
-        format.html { redirect_to @comentario, notice: 'Comentario was successfully updated.' }
+        format.html { redirect_to @comentario.site, notice: 'Comentario was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -83,7 +83,7 @@ class ComentariosController < ApplicationController
   # DELETE /comentarios/1
   # DELETE /comentarios/1.json
   def destroy
-    @comentario = current_user.comentarios.find(params[:id])
+    @comentario = current_usr.comentarios.find(params[:id])
     @comentario.destroy
 
     respond_to do |format|

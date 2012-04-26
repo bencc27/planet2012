@@ -1,0 +1,39 @@
+
+Cachos de codigo que han fallado(los guardo por si los necesito luego)
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+
+  function pintaMapa() {
+    var lati = <%= @site.latitud %>;
+    var longi = <%= @site.longitud %>;
+    var latlng = new google.maps.LatLng(lati,longi);
+    var myOptions = {
+      zoom: <%= @site.zoom %>,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("mapa_disp"), myOptions);
+    var marker = new google.maps.Marker({
+            map: map,
+            position: latlng
+            title:<%= @site.name %>
+        });
+  }
+
+</script>
+
+<%= render "comentarios/comSite" %>
+@comentario =  current_user.comentarios.build(params[:comentario])
+
+@site = Site.find(params[:site_id])
+    @commentario = @site.comentarios.create(params[:comentario])
+    @comentario.user_id = current_user.id 
+
+comentario_controller_test
+
+  test "should get new" do
+    get :new, id: @site
+    assert_response :success
+  end
