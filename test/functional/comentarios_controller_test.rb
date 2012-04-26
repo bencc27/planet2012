@@ -20,6 +20,12 @@ class ComentariosControllerTest < ActionController::TestCase
     assert_not_nil assigns(:comentarios)
   end
 
+
+  test "should get new" do
+    get :new, site_id: @site
+    assert_response :success
+  end
+
   test "should create comentario" do
     assert_difference('Comentario.count') do
       post :create, comentario: @updateComent

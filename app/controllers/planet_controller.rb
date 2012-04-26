@@ -20,35 +20,38 @@
 # 3. * permite generar letra de +teletipo+, igual que <tt> con HTML</tt>
 #
 class PlanetController < ApplicationController
+  # == Método index de planet
   # Método que define una acción vacía del controlador
   def index
   end
+  # == Método contact de planet
   # Método que define una acción vacía del controlador
   def contact
   end
+  ## == Método ejemplo de planet
   # Método que define una acción vacía del controlador
   def ejemplo
   end
 
+# == Método author de planet
+# incluye.
+# *El nombre de los autore.
+# *Una foto de cada autor.
+# *Sus respectivos correos
   def author
   end
 
 
-## == Método search de planet
+# == Método search de planet
 # Search es  un buscador de sitios y viajes que este en todas las páginas 
-# en el mismo lugar, y que presenta los resultados en dos apartados,
+# en el mismo lugar, y que presenta los _+resultados+_ en dos apartados,
 # en sitios y en viajes encontrados.
-# genera en el directorio *proy/doc* en formato Web con
-# $proy> rake doc:app
+
 
   def search
     if params[:q].length >= 3
     @sites = Site.where("name like ? OR description like ?", "%#{params[:q]}%", "%#{params[:q]}%")
     @trips = Trip.where("name like ? OR description like ?", "%#{params[:q]}%", "%#{params[:q]}%")
-
-   elsif params[:q] ==nil
-
-    format.html { redirect_to planet_index_path, notice: 'Debe buscar mas de dos letras.' }
    else
      format.html { redirect_to planet_index_path, notice: 'Debe buscar mas de dos letras.' }
     end

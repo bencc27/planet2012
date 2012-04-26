@@ -3,8 +3,9 @@ class ComentariosController < ApplicationController
    # authenticate_user! ejecuta acción solo si sesión existe
   before_filter :authenticate_user!, :except => [ :index, :show ]
 
- 
+ # =Métodos para interactuar con los comentarios
 
+# ==Método index
   # GET /comentarios
   # GET /comentarios.json
   def index
@@ -20,6 +21,7 @@ class ComentariosController < ApplicationController
     end
   end
 
+# ==Método show
   # GET /comentarios/1
   # GET /comentarios/1.json
   def show
@@ -30,7 +32,13 @@ class ComentariosController < ApplicationController
       format.json { render json: @comentario }
     end
   end
-
+  
+  # ==Método new
+  # Este método es el usado para crear los comentarios, también en
+  # las páginas show de los sitios, porque tuvimos muchos problemas
+  # para introducir una caja de formulario. Si en vez de este método usabamos
+  # los *formularios* se nos creaba un comentario con los campos null cada vez que se
+  # accedía a la vista de calquier sitio.
   # GET /comentarios/new
   # GET /comentarios/new.json
   def new
@@ -42,12 +50,17 @@ class ComentariosController < ApplicationController
     end
   end
 
+# ==Método edit
   # GET /comentarios/1/edit
   def edit
     @comentario = current_user.comentarios.find(params[:id]) #filtro para que nadie pueda editar comentarios
                                                              #de otro usuario.
   end
 
+
+# ==Método create
+# Nos aseguramos de que el comentario se cree solo si hay un usuario logueado usando
+# el comando *current_user.comentarios.build(params[:comentario])*
   # POST /comentarios
   # POST /comentarios.json
   def create
@@ -64,6 +77,8 @@ class ComentariosController < ApplicationController
     end
   end
 
+
+# ==Método update
   # PUT /comentarios/1
   # PUT /comentarios/1.json
   def update
@@ -80,6 +95,7 @@ class ComentariosController < ApplicationController
     end
   end
 
+# ==Método destroy
   # DELETE /comentarios/1
   # DELETE /comentarios/1.json
   def destroy
